@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  azureml-mcp-server:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # These will be loaded from your .env file or set in deployment
+      - AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
+      - AZUREML_RESOURCE_GROUP=${AZUREML_RESOURCE_GROUP}
+      - AZUREML_WORKSPACE_NAME=${AZUREML_WORKSPACE_NAME}
+      # For local testing with service principal
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+    volumes:
+      - ~/.azure:/home/app/.azure:ro  # Mount Azure CLI credentials for local testing
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "mcp-demo"
+version = "0.1.0"
+description = "Azure ML MCP Server"
+authors = ["Frida Almogabar <falmogabarsanchez@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mcp_server_new.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mcp = {extras = ["cli"], version = "^1.10.1"}
+fastmcp = "^2.10.2"
+azure-ai-ml = "^1.27.1"
+azure-identity = "^1.15.0"
+azure-mgmt-resource = "^23.0.0"
+uvicorn = "^0.35.0"
+starlette = "^0.41.0"
+python-dotenv = "^1.0.0"
+httpx = "^0.28.1"
+pydantic = "^2.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+black = "^23.0.0"
+isort = "^5.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

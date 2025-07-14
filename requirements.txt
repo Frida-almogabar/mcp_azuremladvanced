@@ -1,0 +1,10 @@
+mcp[cli]==1.10.1
+fastmcp==2.10.2
+azure-ai-ml==1.27.1
+azure-identity==1.15.0
+azure-mgmt-resource==23.0.0
+uvicorn[standard]==0.35.0
+starlette==0.41.0
+python-dotenv>=1.1.0
+httpx==0.28.1
+pydantic>=2.11.7
